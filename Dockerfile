@@ -9,6 +9,7 @@ WORKDIR /app
 RUN corepack enable && pnpm install --frozen-lockfile --prod
 
 FROM node:24-alpine AS build-env
+RUN apk add --no-cache git
 COPY . /app/
 COPY --from=development-dependencies-env /app/node_modules /app/node_modules
 WORKDIR /app
