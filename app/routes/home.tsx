@@ -166,7 +166,7 @@ export default function Home() {
           event.preventDefault();
           closeDialog();
         }}
-        className={`m-auto rounded-2xl bg-sand p-6 backdrop:bg-black/40 ${isClosing ? "closing" : ""}`}
+        className={`m-auto rounded-2xl bg-sand-dark p-6 backdrop:bg-black/40 ${isClosing ? "closing" : ""}`}
       >
         {result && (
           <div className="flex flex-col items-center gap-4">
