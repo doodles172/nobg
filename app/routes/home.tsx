@@ -53,6 +53,18 @@ export default function Home() {
     if (result) dialogRef.current?.showModal();
   }, [result]);
 
+  useEffect(() => {
+    function onPaste(event: ClipboardEvent) {
+      if (isProcessing) return;
+      const file = Array.from(event.clipboardData?.items ?? [])
+        .find((item) => item.type.startsWith("image/"))
+        ?.getAsFile();
+      if (file) submitFile(file);
+    }
+    window.addEventListener("paste", onPaste);
+    return () => window.removeEventListener("paste", onPaste);
+  }, [isProcessing]);
+
   function closeDialog() {
     setIsClosing(true);
     setTimeout(() => {
@@ -130,7 +142,7 @@ export default function Home() {
           <span className="text-brown">
             {isProcessing
               ? "Removing background :D"
-              : "Drop an image here, or click to choose one"}
+              : "Drop or paste an image here, or click to choose one"}
           </span>
           <input
             type="file"
