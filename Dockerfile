@@ -9,6 +9,8 @@ WORKDIR /app
 RUN corepack enable && pnpm install --frozen-lockfile --prod
 
 FROM node:24-slim AS build-env
+ARG DOMAIN
+ENV DOMAIN=$DOMAIN
 RUN apt-get update && apt-get install -y --no-install-recommends git && rm -rf /var/lib/apt/lists/*
 COPY . /app/
 COPY --from=development-dependencies-env /app/node_modules /app/node_modules
