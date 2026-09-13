@@ -16,6 +16,18 @@ body {
   background-color: var(--color-sand);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --color-sand: #211a13;
+    --color-sand-light: #362c21;
+    --color-sand-dark: #46392b;
+    --color-tan: #5c4b3a;
+    --color-brown: #e8dcc8;
+    --color-brown-muted: #ab9a86;
+  }
+}
+
 dialog {
   opacity: 0;
   scale: 0.95;
