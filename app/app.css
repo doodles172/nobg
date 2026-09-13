@@ -11,7 +11,8 @@
   --color-brown-muted: #9c8672;
 }
 
-html {
+html,
+body {
   background-color: var(--color-sand);
 }
 
@@ -24,23 +25,6 @@ html {
     --color-tan: #5c4b3a;
     --color-brown: #e8dcc8;
     --color-brown-muted: #ab9a86;
-  }
-}
-
-@keyframes squiggle-launch {
-  0% {
-    transform: translateY(0);
-    opacity: 0;
-  }
-  8% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-160vh);
-    opacity: 0;
   }
 }
 
