@@ -8,6 +8,11 @@ export function meta({}: Route.MetaArgs) {
   return [
     { title: "NoBG" },
     { name: "description", content: "Remove image backgrounds easily!" },
+    { property: "og:title", content: "NoBG" },
+    { property: "og:description", content: "Remove image backgrounds easily!" },
+    { property: "og:image", content: "/favicon.png" },
+    { name: "twitter:card", content: "summary" },
+    { name: "twitter:image", content: "/favicon.png" },
   ];
 }
 
