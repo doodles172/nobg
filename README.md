@@ -3,9 +3,9 @@
   <img src="public/favicon.svg" width="120" alt="NoBG logo" />
 
   # NoBG
-</div>
 
-The FOSS image background remover that shouldn't need to exist.
+  The FOSS image background remover that shouldn't need to exist.
+</div>
 
 ## Demo
 
