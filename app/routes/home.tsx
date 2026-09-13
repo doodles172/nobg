@@ -85,7 +85,7 @@ export default function Home() {
             if (isProcessing) return;
             submitFile(event.dataTransfer.files[0]);
           }}
-          className={`flex h-96 w-[32rem] cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed text-center transition-colors ${
+          className={`flex h-64 w-80 cursor-pointer flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed text-center transition-colors sm:h-96 sm:w-[32rem] ${
             isDraggingOver
               ? "border-brown bg-sand-dark"
               : "border-tan bg-sand-light"
@@ -148,7 +148,7 @@ export default function Home() {
         )}
       </dialog>
 
-      <p className="fixed bottom-4 left-4 text-sm text-brown-muted">
+      <p className="fixed bottom-4 left-4 hidden text-sm text-brown-muted sm:block">
         {__COMMIT_HASH__} - {import.meta.env.MODE}
       </p>
 
