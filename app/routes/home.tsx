@@ -1,5 +1,5 @@
 import { removeBackground } from "@imgly/background-removal-node";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useFetcher } from "react-router";
 
 import type { Route } from "./+types/home";
@@ -48,6 +48,28 @@ export default function Home() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const toastRef = useRef<HTMLParagraphElement>(null);
   const result = fetcher.data && "image" in fetcher.data ? fetcher.data : null;
+
+  const squiggles = useMemo(() => {
+    if (!isProcessing) return [];
+    const count = 12;
+    const perSide = count / 2;
+    const sideWidth = 35;
+    const slot = sideWidth / perSide;
+    return Array.from({ length: count }, (_, id) => {
+      const onRight = id >= perSide;
+      const slotIndex = onRight ? id - perSide : id;
+      const sideStart = onRight ? 100 - sideWidth : 0;
+      return {
+        id,
+        src: `/squiggles/squiggle-${1 + Math.floor(Math.random() * 3)}.svg`,
+        left: sideStart + slotIndex * slot + slot * (0.15 + Math.random() * 0.55),
+        width: 24 + Math.random() * 24,
+        duration: 2.5 + Math.random() * 2,
+        delay: Math.random() * 6,
+        flip: Math.random() < 0.5,
+      };
+    });
+  }, [isProcessing]);
 
   useEffect(() => {
     if (result) dialogRef.current?.showModal();
@@ -107,6 +129,29 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-6">
+      {squiggles.length > 0 && (
+        <div
+          aria-hidden
+          className="pointer-events-none fixed inset-0 -z-10 hidden overflow-hidden sm:block"
+        >
+          {squiggles.map((squiggle) => (
+            <img
+              key={squiggle.id}
+              src={squiggle.src}
+              alt=""
+              className={`absolute bottom-0 ${squiggle.flip ? "-scale-x-100" : ""}`}
+              style={{
+                left: `${squiggle.left}%`,
+                width: squiggle.width,
+                animation: `squiggle-launch ${squiggle.duration}s linear infinite`,
+                animationDelay: `${squiggle.delay}s`,
+                animationFillMode: "backwards",
+              }}
+            />
+          ))}
+        </div>
+      )}
+
       <p
         ref={toastRef}
         popover="manual"
