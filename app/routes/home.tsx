@@ -44,13 +44,14 @@ export default function Home() {
   const isProcessing = fetcher.state !== "idle";
   const [isDraggingOver, setIsDraggingOver] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const [showCopied, setShowCopied] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const toastRef = useRef<HTMLParagraphElement>(null);
+  const result = fetcher.data && "image" in fetcher.data ? fetcher.data : null;
 
   useEffect(() => {
-    if (fetcher.data && "image" in fetcher.data) {
-      dialogRef.current?.showModal();
-    }
-  }, [fetcher.data]);
+    if (result) dialogRef.current?.showModal();
+  }, [result]);
 
   function closeDialog() {
     setIsClosing(true);
@@ -67,8 +68,38 @@ export default function Home() {
     fetcher.submit(data, { method: "post", encType: "multipart/form-data" });
   }
 
+  async function copyToClipboard(dataUrl: string | undefined) {
+    if (!dataUrl) return;
+    const blob = await fetch(dataUrl).then((response) => response.blob());
+    await navigator.clipboard.write([
+      new ClipboardItem({ [blob.type]: blob }),
+    ]);
+    toastRef.current?.showPopover();
+    setShowCopied(true);
+    setTimeout(() => {
+      setShowCopied(false);
+      setTimeout(() => toastRef.current?.hidePopover(), 300);
+    }, 2000);
+  }
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-6">
+      <p
+        ref={toastRef}
+        popover="manual"
+        role="status"
+        aria-live="polite"
+        className="pointer-events-none fixed inset-0 m-0 flex h-dvh w-screen items-start justify-center border-0 bg-transparent p-0 pt-4"
+      >
+        <span
+          className={`rounded-full bg-brown px-5 py-2 text-sand shadow transition-all duration-300 ${
+            showCopied ? "translate-y-0 opacity-100" : "-translate-y-8 opacity-0"
+          }`}
+        >
+          Copied to clipboard!
+        </span>
+      </p>
+
       <h1 className="-translate-y-4 text-center text-6xl tracking-wide text-brown">
         NoBG
       </h1>
@@ -125,18 +156,18 @@ export default function Home() {
         }}
         className={`m-auto rounded-2xl bg-sand p-6 backdrop:bg-black/40 ${isClosing ? "closing" : ""}`}
       >
-        {fetcher.data && "image" in fetcher.data && (
+        {result && (
           <div className="flex flex-col items-center gap-4">
             <h2 className="text-3xl text-brown">Removed!</h2>
             <img
-              src={fetcher.data.image}
+              src={result.image}
               alt="Background removed"
               className="max-h-[60vh] max-w-sm"
             />
             <div className="flex gap-3">
               <a
-                href={fetcher.data.image}
-                download={fetcher.data.filename}
+                href={result.image}
+                download={result.filename}
                 className="rounded-full bg-brown px-5 py-2 text-sand outline-none"
               >
                 Download
@@ -149,6 +180,13 @@ export default function Home() {
                 Close
               </button>
             </div>
+            <button
+              type="button"
+              onClick={() => copyToClipboard(result.image)}
+              className="cursor-pointer text-sm text-brown underline outline-none"
+            >
+              Copy to clipboard
+            </button>
           </div>
         )}
       </dialog>
