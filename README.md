@@ -2,7 +2,7 @@
 <div align="center">
   <img src="public/favicon.svg" width="120" alt="NoBG logo" />
 
-  # NoBG
+  <p style="font-size: 2.5em; font-weight: 700; margin: 0.5em 0 0;">NoBG</p>
 
   The FOSS image background remover that shouldn't need to exist.
 </div>
