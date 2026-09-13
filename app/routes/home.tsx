@@ -65,6 +65,17 @@ export default function Home() {
     return () => window.removeEventListener("paste", onPaste);
   }, [isProcessing]);
 
+  useEffect(() => {
+    function onCopy(event: ClipboardEvent) {
+      if (!dialogRef.current?.open) return;
+      if (window.getSelection()?.toString()) return;
+      event.preventDefault();
+      copyToClipboard(result?.image);
+    }
+    document.addEventListener("copy", onCopy);
+    return () => document.removeEventListener("copy", onCopy);
+  }, [result]);
+
   function closeDialog() {
     setIsClosing(true);
     setTimeout(() => {
