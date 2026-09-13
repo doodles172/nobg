@@ -142,7 +142,7 @@ export default function Home() {
           <span className="text-brown">
             {isProcessing
               ? "Removing background :D"
-              : "Drop or paste an image here, or click to choose one"}
+              : "Drop, paste, or click to choose an image"}
           </span>
           <input
             type="file"
