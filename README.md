@@ -1,18 +1,22 @@
 
-# NoBG
+<div align="center">
+  <img src="public/favicon.svg" width="120" alt="NoBG logo" />
+
+  # NoBG
+</div>
 
 The FOSS image background remover that shouldn't need to exist.
+
 ## Demo
 
-Hah, we still need to make it!
-
+Todo!
 
 ## Run Locally
 
 Clone the project
 
 ```bash
-  git clone https://github.com/vantern-org/nobg.git
+  git clone https://github.com/doodles172/nobg.git
 ```
 
 Go to the project directory
@@ -36,7 +40,7 @@ Start the server
 
 ## Support
 
-For support, email contact@vantern.org or join our [Discord Server](https://vtrn.cc/dc).
+For support, email eamon@vantern.org.
 
 
 ## Authors
@@ -54,4 +58,3 @@ Please adhere to this project's `code of conduct`.
 ## License
 
 [AGPL-3.0](https://choosealicense.com/licenses/agpl-3.0/)
-

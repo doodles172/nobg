@@ -1,15 +1,63 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: "Playpen Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-sand: #ede4d6;
+  --color-sand-light: #f5efe6;
+  --color-sand-dark: #e3d6c4;
+  --color-tan: #c9b8a3;
+  --color-brown: #6f5b4c;
+  --color-brown-muted: #9c8672;
 }
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  background-color: var(--color-sand);
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+dialog {
+  opacity: 0;
+  scale: 0.95;
+  transition:
+    opacity 0.2s ease,
+    scale 0.2s ease,
+    display 0.2s allow-discrete,
+    overlay 0.2s allow-discrete;
+}
+
+dialog[open] {
+  opacity: 1;
+  scale: 1;
+}
+
+dialog[open].closing {
+  opacity: 0;
+  scale: 0.95;
+}
+
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+    scale: 0.95;
+  }
+}
+
+dialog::backdrop {
+  opacity: 0;
+  transition: opacity 0.2s ease allow-discrete;
+}
+
+dialog[open]::backdrop {
+  opacity: 1;
+}
+
+dialog[open].closing::backdrop {
+  opacity: 0;
+}
+
+@starting-style {
+  dialog[open]::backdrop {
+    opacity: 0;
   }
 }
