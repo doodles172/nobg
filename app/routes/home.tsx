@@ -226,7 +226,7 @@ export default function Home() {
 
       <footer className="pointer-events-none fixed bottom-4 flex w-full flex-col items-center gap-2 text-center text-sm text-brown-muted">
         <a
-          href="https://github.com/doodles172/nobg"
+          href="https://github.com/eamonwatson/nobg"
           target="_blank"
           rel="noreferrer"
           aria-label="View source on GitHub"
@@ -245,7 +245,7 @@ export default function Home() {
         <p className="pointer-events-auto">
           Made with love by{" "}
           <a
-            href="https://github.com/sponsors/doodles172"
+            href="https://github.com/sponsors/eamonwatson"
             target="_blank"
             rel="noreferrer"
             className="underline transition-colors hover:text-brown"
