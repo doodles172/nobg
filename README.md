@@ -9,7 +9,7 @@
 
 ## Demo
 
-Todo!
+![NoBG demo](public/demo.gif)
 
 ## Run Locally
 
