@@ -6,7 +6,7 @@
 
   The FOSS image background remover that shouldn't need to exist.
   
-  [![CodeFactor](https://www.codefactor.io/repository/github/doodles172/nobg/badge)](https://www.codefactor.io/repository/github/doodles172/nobg)
+  [![CodeFactor](https://www.codefactor.io/repository/github/eamonwatson/nobg/badge)](https://www.codefactor.io/repository/github/eamonwatson/nobg)
 </div>
 
 ## Demo
@@ -18,7 +18,7 @@
 Clone the project
 
 ```bash
-  git clone https://github.com/doodles172/nobg.git
+  git clone https://github.com/eamonwatson/nobg.git
 ```
 
 Go to the project directory
@@ -47,7 +47,7 @@ For support, email eamon@vantern.org.
 
 ## Authors
 
-- [@doodles172](https://www.github.com/doodles172)
+- [@eamonwatson](https://www.github.com/eamonwatson)
 ## Contributing
 
 Contributions are always welcome!
