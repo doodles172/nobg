@@ -5,6 +5,8 @@
   # NoBG
 
   The FOSS image background remover that shouldn't need to exist.
+  
+  [![CodeFactor](https://www.codefactor.io/repository/github/doodles172/nobg/badge)](https://www.codefactor.io/repository/github/doodles172/nobg)
 </div>
 
 ## Demo
