@@ -4,6 +4,8 @@ import { useFetcher } from "react-router";
 
 import type { Route } from "./+types/home";
 
+const maxFileSize = Number(process.env.MAX_FILE_SIZE) || 20;
+
 export function meta(_args: Route.MetaArgs) {
   return [
     { title: "NoBG" },
@@ -22,8 +24,8 @@ export async function action({ request }: Route.ActionArgs) {
   if (!(image instanceof File) || image.size === 0) {
     return { error: "Choose an image first" };
   }
-  if (image.size > 20 * 1024 * 1024) { // 20mb limit
-    return { error: "Image is too large (max 20MB)" };
+  if (image.size > maxFileSize * 1024 * 1024) {
+    return { error: `Image is too large (max ${maxFileSize}MB)` };
   }
 
   try {
