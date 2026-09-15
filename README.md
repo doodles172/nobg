@@ -7,6 +7,8 @@
   The FOSS image background remover that shouldn't need to exist.
   
   [![CodeFactor](https://www.codefactor.io/repository/github/eamonwatson/nobg/badge)](https://www.codefactor.io/repository/github/eamonwatson/nobg)
+  ![Github Repo Stars](https://img.shields.io/github/stars/eamonwatson/nobg?style=flat)
+  [![GitHub issues](https://img.shields.io/github/issues/eamonwatson/nobg)](https://github.com/eamonwatson/nobg/issues)
 </div>
 
 ## Demo
