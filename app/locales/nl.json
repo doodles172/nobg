@@ -1,0 +1,15 @@
+{
+  "metaDescription": "Verwijder eenvoudig achtergronden van afbeeldingen!",
+  "dropzone": "Sleep, plak of klik om een afbeelding te kiezen",
+  "processing": "Achtergrond aan het verwijderen :D",
+  "resultTitle": "Verwijderd!",
+  "resultAlt": "Achtergrond verwijderd",
+  "download": "Downloaden",
+  "close": "Sluiten",
+  "copyToClipboard": "Kopiëren naar klembord",
+  "copied": "Gekopieerd naar klembord!",
+  "madeWithLove": "Met liefde gemaakt door",
+  "errorNoImage": "Kies eerst een afbeelding",
+  "errorTooLarge": "Afbeelding is te groot (max ",
+  "errorProcessing": "Kon die afbeelding niet verwerken, probeer een andere"
+}

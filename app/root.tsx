@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import {
   isRouteErrorResponse,
   Links,
@@ -9,6 +11,7 @@ import {
 
 import type { Route } from "./+types/root";
 import "./app.css";
+import "./i18n";
 
 export const links: Route.LinksFunction = () => [
   { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
@@ -25,6 +28,12 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    document.documentElement.lang = i18n.language;
+  }, [i18n.language]);
+
   return (
     <html lang="en">
       <head>

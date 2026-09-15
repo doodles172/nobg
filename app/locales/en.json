@@ -1,0 +1,15 @@
+{
+  "metaDescription": "Remove image backgrounds easily!",
+  "dropzone": "Drop, paste, or click to choose an image",
+  "processing": "Removing background :D",
+  "resultTitle": "Removed!",
+  "resultAlt": "Background removed",
+  "download": "Download",
+  "close": "Close",
+  "copyToClipboard": "Copy to clipboard",
+  "copied": "Copied to clipboard!",
+  "madeWithLove": "Made with love by",
+  "errorNoImage": "Choose an image first",
+  "errorTooLarge": "Image is too large (max ",
+  "errorProcessing": "Couldn't process that image, try a different one"
+}
