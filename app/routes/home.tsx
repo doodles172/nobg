@@ -1,7 +1,9 @@
 import { removeBackground } from "@imgly/background-removal-node";
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useFetcher } from "react-router";
 
+import { detectLangFromHeader, resources } from "~/i18n";
 import type { Route } from "./+types/home";
 
 const maxFileSize = Number(process.env.MAX_FILE_SIZE) || 20;
@@ -9,9 +11,9 @@ const maxFileSize = Number(process.env.MAX_FILE_SIZE) || 20;
 export function meta(_args: Route.MetaArgs) {
   return [
     { title: "NoBG" },
-    { name: "description", content: "Remove image backgrounds easily!" },
+    { name: "description", content: resources.en.translation.metaDescription },
     { property: "og:title", content: "NoBG" },
-    { property: "og:description", content: "Remove image backgrounds easily!" },
+    { property: "og:description", content: resources.en.translation.metaDescription },
     { property: "og:image", content: "/favicon.png" },
     { name: "twitter:card", content: "summary" },
     { name: "twitter:image", content: "/favicon.png" },
@@ -19,13 +21,16 @@ export function meta(_args: Route.MetaArgs) {
 }
 
 export async function action({ request }: Route.ActionArgs) {
+  const lang = detectLangFromHeader(request.headers.get("Accept-Language"));
+  const t = resources[lang].translation;
+
   const formData = await request.formData();
   const image = formData.get("image");
   if (!(image instanceof File) || image.size === 0) {
-    return { error: "Choose an image first" };
+    return { error: t.errorNoImage };
   }
   if (image.size > maxFileSize * 1024 * 1024) {
-    return { error: `Image is too large (max ${maxFileSize}MB)` };
+    return { error: `${t.errorTooLarge}${maxFileSize}MB)` };
   }
 
   try {
@@ -37,11 +42,12 @@ export async function action({ request }: Route.ActionArgs) {
       filename: `${originalName}-nobg.png`,
     };
   } catch {
-    return { error: "Couldn't process that image, try a different one" };
+    return { error: t.errorProcessing };
   }
 }
 
 export default function Home() {
+  const { t } = useTranslation();
   const fetcher = useFetcher<typeof action>();
   const isProcessing = fetcher.state !== "idle";
   const [isDraggingOver, setIsDraggingOver] = useState(false);
@@ -121,7 +127,7 @@ export default function Home() {
             showCopied ? "translate-y-0 opacity-100" : "-translate-y-8 opacity-0"
           }`}
         >
-          Copied to clipboard!
+          {t("copied")}
         </span>
       </p>
 
@@ -159,9 +165,7 @@ export default function Home() {
             </svg>
           )}
           <span className="text-brown">
-            {isProcessing
-              ? "Removing background :D"
-              : "Drop, paste, or click to choose an image"}
+            {isProcessing ? t("processing") : t("dropzone")}
           </span>
           <input
             type="file"
@@ -189,10 +193,10 @@ export default function Home() {
       >
         {result && (
           <div className="flex flex-col items-center gap-4">
-            <h2 className="text-3xl text-brown">Removed!</h2>
+            <h2 className="text-3xl text-brown">{t("resultTitle")}</h2>
             <img
               src={result.image}
-              alt="Background removed"
+              alt={t("resultAlt")}
               className="max-h-[60vh] max-w-sm"
             />
             <div className="flex gap-3">
@@ -201,14 +205,14 @@ export default function Home() {
                 download={result.filename}
                 className="rounded-full bg-brown px-5 py-2 text-sand outline-none"
               >
-                Download
+                {t("download")}
               </a>
               <button
                 type="button"
                 onClick={closeDialog}
                 className="cursor-pointer rounded-full border border-brown px-5 py-2 text-brown outline-none"
               >
-                Close
+                {t("close")}
               </button>
             </div>
             <button
@@ -216,7 +220,7 @@ export default function Home() {
               onClick={() => copyToClipboard(result.image)}
               className="cursor-pointer text-sm text-brown underline outline-none"
             >
-              Copy to clipboard
+              {t("copyToClipboard")}
             </button>
           </div>
         )}
@@ -245,7 +249,7 @@ export default function Home() {
           </svg>
         </a>
         <p className="pointer-events-auto">
-          Made with love by{" "}
+          {t("madeWithLove")}{" "}
           <a
             href="https://github.com/sponsors/eamonwatson"
             target="_blank"
