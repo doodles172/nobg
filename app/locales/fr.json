@@ -1,0 +1,15 @@
+{
+  "metaDescription": "Supprimez facilement l'arrière-plan de vos images !",
+  "dropzone": "Déposez, collez ou cliquez pour choisir une image",
+  "processing": "Suppression de l'arrière-plan en cours :D",
+  "resultTitle": "Supprimé !",
+  "resultAlt": "Arrière-plan supprimé",
+  "download": "Télécharger",
+  "close": "Fermer",
+  "copyToClipboard": "Copier dans le presse-papiers",
+  "copied": "Copié dans le presse-papiers !",
+  "madeWithLove": "Créé avec amour par",
+  "errorNoImage": "Veuillez d'abord choisir une image",
+  "errorTooLarge": "L'image est trop grande (max ",
+  "errorProcessing": "Impossible de traiter cette image, veuillez en essayer une autre"
+}

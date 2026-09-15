@@ -1,0 +1,15 @@
+{
+  "metaDescription": "Bildhintergründe einfach entfernen!",
+  "dropzone": "Bild per Drag & Drop, Einfügen oder Klicken auswählen",
+  "processing": "Hintergrund wird entfernt :D",
+  "resultTitle": "Entfernt!",
+  "resultAlt": "Hintergrund entfernt",
+  "download": "Herunterladen",
+  "close": "Schließen",
+  "copyToClipboard": "In die Zwischenablage kopieren",
+  "copied": "In die Zwischenablage kopiert!",
+  "madeWithLove": "Mit Liebe erstellt von",
+  "errorNoImage": "Bitte zuerst ein Bild auswählen",
+  "errorTooLarge": "Bild ist zu groß (max ",
+  "errorProcessing": "Das Bild konnte nicht verarbeitet werden, versuch es mit einem anderen"
+}
