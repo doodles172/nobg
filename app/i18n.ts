@@ -3,11 +3,13 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 
 import en from "./locales/en.json";
+import fr from "./locales/fr.json";
 import nl from "./locales/nl.json";
 
 export const resources = {
   en: { translation: en },
   nl: { translation: nl },
+  fr: { translation: fr },
 } as const;
 
 export const supportedLngs = Object.keys(resources) as (keyof typeof resources)[];
